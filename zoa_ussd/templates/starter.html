@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <style type="text/css">
+        </style>
+    </head>
+    <body>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        Enter USSD Code to Run Simulator
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form action="{% url "http-simulator" %}" method="GET">
+                            <input style="font-size: 30px; line-height:30px; width: 100%; margin-bottom: 10px;" type="text" name="ussd_code" />
+                            <input type="submit" value="Submit" >
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

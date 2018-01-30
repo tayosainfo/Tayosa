@@ -1,0 +1,71 @@
+html {
+    height: 100%;
+    font-size: 15px;
+}
+
+.mobile-phone-holder{
+    background: url("../img/mo.png");
+    background-repeat: no-repeat;
+    height: 688px;
+    background-size: 335px 670px;
+    padding: 77px 19px;
+}
+
+.mobile-phone-holder iframe{
+    border: none;
+    padding: 30px 10px;
+    height: 456px;
+    width: 275px;
+}
+
+#map-id{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    padding-top: 50px;
+}
+
+.padding{
+        padding: 30px 20px 30px 40px;
+}
+
+.fullheight{
+    height: 100%;
+}
+
+.sidebar{
+    height: 100%;
+    border-right: 1px solid #E9E9E9;
+}
+
+.long-sleeve{
+    padding-right: 10px;
+    height: 70%;
+    border-bottom: 1px solid #E9E9E9;
+}
+.short-sleeve{
+    height: 30%;
+    padding: 15px 15px 0px 0px;
+    background-color: #FFFFF6;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+legend {
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.sidebar{
+    background-color: #FDFDFD;
+}

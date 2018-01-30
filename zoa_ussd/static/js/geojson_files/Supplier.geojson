@@ -1,0 +1,46 @@
+{
+    "crs": {
+        "type": "name", "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}
+    }, 
+    "type": "FeatureCollection", 
+    "features": []
+}
+
+{
+    "type": "FeatureCollection",
+    "crs": { 
+        "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } 
+    },                                                                            
+    "features": [
+        { 
+            "type": "Feature", 
+            "properties": { 
+                "id": 1, 
+                "Name": "Agrovet", 
+                "Name_": "Hillway", 
+                "Contact": 724367456 
+            }, 
+            "geometry": { 
+                "type": "Point", 
+                "coordinates": [ 
+                    36.984430702796779, -1.264353696214664 
+                ] 
+            } 
+        },
+        { 
+            "type": "Feature", 
+            "properties": { 
+                "id": 2, 
+                "Name": "Agrovet", 
+                "Name_": "FarmShop", 
+                "Contact": 736473283 
+            }, 
+            "geometry": { 
+                "type": "Point", 
+                "coordinates": [
+                    36.985634290437368, -1.264716954937594 
+                ] 
+            }
+        } 
+    ]
+}

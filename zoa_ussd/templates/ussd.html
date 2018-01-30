@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <style type="text/css">
+        </style>
+    </head>
+    <body>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        {{ message|linebreaks }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form action="{% url "http-simulator" %}" method="POST">{% csrf_token %}
+                            {% if session_id %}
+                                <input type="hidden" name="session_id" value="{{ session_id }}" >
+                            {% endif %}
+                            {% if phone_number %}
+                                <input type="hidden" name="phone_number" value="{{ phone_number }}" >
+                            {% endif %}
+                            {% if not request_closed %}
+                                <input style="font-size: 20px; line-height:20px; width: 100%; margin-bottom: 10px;" type="text" name="input_value" >
+                                <input type="submit" value="Submit" >
+                            {% endif %}
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

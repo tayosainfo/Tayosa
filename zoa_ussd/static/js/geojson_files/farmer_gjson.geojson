@@ -1,0 +1,33 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "ID": 1, "Name_": "Jack", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.006616581801872, -1.276355263830977, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 2, "Name_": "Hannah", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.01573307226294, -1.277139099681126, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 3, "Name_": "Lukoi", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.004907238200779, -1.273554828157956, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 4, "Name_": "Watau", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.00585234354984, -1.266212866844723, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 5, "Name_": "Dedan", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.007007985598953, -1.268584468445795, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 6, "Name_": "John", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.002577865835853, -1.263867373913828, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 7, "Name_": "Omondi", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.003277818585083, -1.262546417110757, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 8, "Name_": "Gitau", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.001829402003729, -1.26167920382965, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 9, "Name_": "Kilti", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.002603550247592, -1.257488273670306, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 10, "Name_": "Sally", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.00387084829724, -1.256834744537227, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 11, "Name_": "Kamulu", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 36.993485297836841, -1.249886506405998, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 12, "Name_": "Njoroge", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 36.989008058487272, -1.265673063349142, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 13, "Name_": "Mulaimu", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 36.984984238084259, -1.255883894307544, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 14, "Name_": "Mutheu", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 36.991896981790823, -1.257854138990192, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 15, "Name_": "Gerald", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.005686558210932, -1.259152971039405, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 16, "Name_": "Jack", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.002166588594797, -1.257275816909172, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 17, "Name_": "Wafula", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.003177148028882, -1.261481680148084, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 18, "Name_": "Theuri", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 36.996443870001841, -1.267350579157319, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 19, "Name_": "Linet", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 36.986043056051152, -1.25940429105651, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 20, "Name_": "Maggy", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 36.980797230674263, -1.264172066834147, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 21, "Name_": "Kungu", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 36.960813134000468, -1.248832852392355, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 22, "Name_": "Mike", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 36.994201336426237, -1.245501066652475, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 23, "Name_": "Justus", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 36.971401298857465, -1.254991252726863, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 24, "Name_": "Mike", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.019544804480766, -1.261711555068642, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 25, "Name_": "Alex", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 36.993386929379895, -1.276257643824385, 0.0 ] } },
+{ "type": "Feature", "properties": { "ID": 26, "Name_": "Jane", "Contact": null }, "geometry": { "type": "Point", "coordinates": [ 37.012097956221908, -1.288457431164785, 0.0 ] } }
+]
+}

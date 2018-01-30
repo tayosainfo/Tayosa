@@ -1,0 +1,126 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="keywords" content="jQuery Splitter, AngularJS, Angular Splitter, AngularJS Splitter, Splitter Widget, Splitter, jqxSplitter" />
+        <title id='Description'> Dairy Manager</title>
+
+        <!-- openlayers lib -->
+        <script type="text/javascript" src= "{% static "js/libs/OpenLayers-2.13.1/OpenLayers.js" %}"></script>
+
+        <link rel="stylesheet" href="{% static "js/libs/dojo_toolkit/dijit/themes/soria/soria.css" %}" />
+        <script src="{% static "js/libs/dojo_toolkit/dojo/dojo.js" %}" data-dojo-config="async: true,parseOnLoad: true, gfxRenderer: 'svg,silverlight,vml,canvas'"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static "js/libs/ext-3.4.1/resources/css/ext-all.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "js/libs/ext-3.4.1/resources/css/xtheme-gray.css" %}">
+
+        <script type="text/javascript" src="{% static "js/libs/ext-3.4.1/adapter/ext/ext-base.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/libs/ext-3.4.1/ext-all-debug.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/libs/ext-3.4.1/ext-all.js" %}"></script>
+        
+        <link rel="stylesheet" type="text/css" href="{% static "js/libs/GeoExt/resources/css/popup.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "js/libs/GeoExt/resources/css/layerlegend.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "js/libs/GeoExt/resources/css/gxtheme-gray.css" %}">
+        <script type="text/javascript" src="{% static "js/libs/GeoExt/script/GeoExt.js" %}"></script>
+
+        <link rel="stylesheet" href="{% static "js/libs/bootstrap/bootstrap.min.css" %}" type="text/css" />
+        <link rel="stylesheet" href="{% static "css/styles.css" %}" type="text/css" />
+        
+        <script type="text/javascript" src="{% static "js/libs/scripts/jquery-1.11.1.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/libs/bootstrap/bootstrap.min.js" %}"></script>
+
+        <script type="text/javascript" src= "{% static "js/main.js" %}"></script>
+    </head>
+    <body onload = "init({{ request.user.farmer_profile.geom.json }})" class="soria">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Dairy Know-how</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+              <ul style="margin-top: 15px;" class="nav navbar-nav pull-right">
+                <li>
+                  <form method="POST" action="{% url "logout" %}">{% csrf_token %}
+                    <button class="btn btn-xs btn-danger" type="submit">Logout</button>
+                  </form>
+                </li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+        <div class="fullheight row">
+            <div class="col-lg-3 sidebar padding fullheight">
+                <form id="querySupplierLayerForm" class="form">
+                    <div class="form-group">
+                        <label class="radio-inline">
+                          <input type="radio" name="item_type" id="product_item_type" value="product"> Product
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="item_type" id="service_item_type" value="service"> Service
+                        </label>
+                    </div>
+                    <div class="service-items">
+                        <div class="form-group">
+                            <label>Service Name: </label>
+                            <input type="text" name="service_name" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="product-items">
+                        <div class="form-group">
+                            <label>Product Name: </label>
+                            <input type="text" name="product_name" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Product Category</label>
+                            <select name="product_category" class="form-control">
+                                <option value="">----</option>
+                                <option value="concentrates">Concentrates</option>
+                                <option value="fodder">Fodder</option>
+                                <option value="by-products">By-product</option>
+                                <option value="others">Other</option>
+                            </select>  
+                        </div>
+                        <div>
+                            <hr>
+                            <div class="form-group">
+                              <label>Enter Quantity:</label>
+                              <input class="form-control" type="text" name="quantity">
+                            </div>
+                            <div class="form-group">
+                              <label>Enter Price:</label>
+                              <input class="form-control" type="text" name="price"> 
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <hr>
+                        <div class="form-group">
+                          <input class="btn btn-primary btn-block btn-sm" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-9 fullheight">
+                <div class="row long-sleeve">
+                  <div class="col-lg-12" id="map-id"></div>
+                </div>
+                <div class="row short-sleeve">
+                  <div class="col-lg-12" id="bottomPanel">
+                  </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
