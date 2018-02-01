@@ -2,6 +2,31 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+class MpesaTransaction(models.Model):
+    TRANSACTION_TYPES = (
+        (1, "Paybill"),
+        (2, "Till"))
+    transaction_type = models.IntegerField(choices=TRANSACTION_TYPES)
+
+    first_name = models.CharField(max_length=50)
+    middle_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+
+    billref_number = models.CharField(max_length=30)
+    
+    phone = models.CharField(max_length=30, db_column="msisdn")
+    transaction_amount = models.DecimalField(decimal_places=2, max_digits=18, null=True)
+    transaction_id = models.CharField(max_length=30)
+    transaction_time = models.CharField(max_length=30)
+
+    updated_at = models.DateTimeField(auto_now=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __unicode__(self):
+        return "%s %s %s" % (self.transaction_id, self.phone, self.transaction_amount)
+
+#--------
+
 class FlutterwaveCustomer(models.Model):
     full_name = models.CharField(max_length=100)
 
@@ -53,20 +78,13 @@ class FlutterwavePayment(models.Model):
     def is_card_payment(self):
         return None not in (self.entity_card6, self.entity_card_last4)
 
-class MpesaTransaction(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    billref_number = models.CharField(max_length=30)
-    fw_id = models.CharField(max_length=40)
-    invoice_number = models.CharField(max_length=30, null=True)
-    phone = models.CharField(max_length=30, db_column="msisdn")
-    thirdparty_transaction_id = models.CharField(max_length=30, null=True)
-    transaction_amount = models.DecimalField(decimal_places=2, max_digits=18, null=True)
-    transaction_id = models.CharField(max_length=30)
-    transaction_time = models.CharField(max_length=30)
+#--------
+
+class NiftyTransaction(models.Model):
+    business_short_code = models.CharField(max_length=50)
+    org_account_balance = models.DecimalField(decimal_places=2, max_digits=18, null=True)
+
+    mpesa_transaction = models.ForeignKey('MpesaTransaction', null=True, blank=True)
 
     updated_at = models.DateTimeField(auto_now=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
-
-    def __unicode__(self):
-        return "%s %s %s" % (self.transaction_id, self.phone, self.transaction_amount)
