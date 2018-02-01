@@ -4,8 +4,6 @@ from django.contrib.auth.models import (
     PermissionsMixin
 )
 from django.utils import timezone
-from django.contrib.gis.db import models 
-from django.contrib.gis.geos import Point, GEOSGeometry
 
 class UserManager(BaseUserManager):
     """ Custom manager for Member."""
@@ -63,7 +61,6 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=40)
     mobile_phone_number = models.CharField(max_length=20, unique=True)
-    pin_number = models.CharField(max_length=10)
 
     is_staff = models.BooleanField(('staff status'), default=False, help_text=(
             'Designates whether the user can log into the super admin site.'))
@@ -82,148 +79,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         db_table = "user"
 
+    @property
+    def pin_number(self):
+        return self.password
+
+    @pin_number.setter
+    def pin_number(self, _pin_number):
+        self.set_password(_pin_number)
+
     def __unicode__(self):
         return self.name or self.mobile_phone_number
 
     def get_short_name(self):
         return self.__unicode__()
-
-class Supplier(models.Model):
-    user = models.ForeignKey('User')
-
-    geom = models.PointField(srid=4326, null=True)
-    objects = models.GeoManager()
-
-    class Meta:
-        db_table = "supplier"
-
-    def __unicode__(self):
-        return self.user.name
-
-class ProductType(models.Model):
-    name = models.CharField(max_length=50)
-
-    class Meta:
-        db_table = "product_type"
-
-    def __unicode__(self):
-        return self.name
-
-class Product(models.Model):
-    UNITS = (
-        (1, 'kg'),
-        (2, 'L'),
-    )
-    name = models.CharField(max_length=50)
-    product_type = models.ForeignKey('ProductType')
-    unit = models.IntegerField(choices=UNITS)
-
-    class Meta:
-        db_table = "product"
-
-    def __unicode__(self):
-        return self.name
-
-class SupplierProduct(models.Model):
-    supplier = models.ForeignKey('Supplier', related_name="supplier_products")
-    product  = models.ForeignKey('Product', related_name="product_suppliers")
-
-    price_per_unit = models.FloatField(default=0)
-    quantity = models.FloatField(default=0)
-
-    class Meta:
-        db_table = "supplier_product"
-
-    def __unicode__(self):
-        return self.product.name
-
-class Service(models.Model):
-    name = models.CharField(max_length=50)
-    short_name = models.CharField(max_length=20, null=True)
-
-    class Meta:
-        db_table = "service"
-
-    def __unicode__(self):
-        return self.name
-
-class SupplierService(models.Model):
-    supplier = models.ForeignKey('Supplier', related_name="supplier_services")
-    service = models.ForeignKey('Service', related_name="service_suppliers")
-
-    class Meta:
-        db_table = "supplier_service"
-
-    def __unicode__(self):
-        return self.service.name
-
-class Farmer(models.Model):
-    user = models.OneToOneField('User', related_name="farmer_profile")
-
-    geom = models.PointField(srid=4326, null=True)
-    objects = models.GeoManager()
-    
-    class Meta:
-        db_table = "farmer"
-
-    def __unicode__(self):
-        return self.user.name
-
-class USSDRequest(models.Model):
-    FARMER_USER = 1
-    SUPPLIER_USER = 2
-    USER_TYPES = (
-        (1, "Farmer"),
-        (2, "Supplier"),
-    )
-
-    PRODUCT_ORDER = 1
-    SERVICE_ORDER = 2
-    
-    ORDER_TYPES = (
-        (1, "Product"),
-        (2, "Service"),
-    )
-
-    MENU_FIRST = 0
-    MENU_USER_TYPE = 1
-    MENU_SERVICE = 2
-    MENU_PRODUCT_SERVICE_CATEGORY = 3
-    MENU_PRODUCT = 4
-    MENU_QUANTITY = 5
-    MENU_PRICE = 6
-    MENU_LAST = 7
-    
-    MENUS = (
-        (MENU_FIRST, "First Item"),
-        (MENU_USER_TYPE, "User Type Selection"),
-        (MENU_SERVICE, "Service Type Selection"),
-        (MENU_PRODUCT_SERVICE_CATEGORY, "Service/Product Category Selection"),
-        (MENU_PRODUCT, "Product Selection"),
-        (MENU_QUANTITY, "Quantity Entry"),
-        (MENU_PRICE, "Price Entry"),
-        (MENU_LAST, "Last Item"),
-    )
-
-    session_id = models.CharField(max_length=100)
-
-    user = models.ForeignKey('User', null=True)
-    user_type = models.IntegerField(default=FARMER_USER, choices=USER_TYPES)
-    
-    order_type = models.IntegerField(default=PRODUCT_ORDER, choices=ORDER_TYPES)
-    service = models.ForeignKey('Service', null=True)
-    
-    product_type = models.ForeignKey('ProductType', null=True)
-    product = models.ForeignKey('Product', null=True)
-    quantity = models.FloatField(null=True)
-    price = models.FloatField(null=True)
-
-    request_closed = models.BooleanField(default=False)
-
-    last_step = models.IntegerField(default=MENU_FIRST, choices=MENUS)
-
-    class Meta:
-        db_table = "ussd_request"
-        unique_together = ('session_id', 'user')
-
-    
