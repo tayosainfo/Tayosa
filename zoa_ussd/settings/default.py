@@ -46,7 +46,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'camara_coupons.urls'
+ROOT_URLCONF = 'zoa_ussd.urls'
 
 TEMPLATES = [
     {

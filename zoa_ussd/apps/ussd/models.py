@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.db import models
 
 class USSDProvider(models.Model):
@@ -40,14 +41,14 @@ class USSDRequest(models.Model):
     session_id = models.CharField(max_length=100)
     provider   = models.ForeignKey("USSDProvider")
 
-    current_page  = models.ForeignKey("USSDPage")
-    previous_page = models.ForeignKey("USSDPage")
-
-    user = models.ForeignKey('User', null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
     phone_number = models.CharField(max_length=100)
 
     text = models.CharField(max_length=100)
     request_closed = models.BooleanField(default=False)
+
+    current_page  = models.ForeignKey("USSDPage", related_name="current_requests")
+    previous_page = models.ForeignKey("USSDPage", related_name="previous_requests")
 
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)

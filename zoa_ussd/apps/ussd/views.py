@@ -13,19 +13,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .models import *
 
-@login_required
-def index(request):
-    return TemplateResponse(request, "index.html", {
-    })
-
-def starter(request):
-    return TemplateResponse(request, "starter.html", {
-    })    
-
-def mobile_phone(request):
-    return TemplateResponse(request, "mobile_phone.html", {
-    })
-
 def get_session_id(limit=10):
     chosen_chars   = ""
     possible_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
