@@ -1,12 +1,6 @@
 from django.contrib import admin
 
-from .models import FlutterwaveCustomer, FlutterwavePayment, CouponIssue, MpesaTransaction
-
-@admin.register(CouponIssue)
-class CouponRedemptionAdmin(admin.ModelAdmin):
-    list_display = ('payment', 'coupon_issued', 'issued_to',)
-    search_fields = ('coupon_issued__coupon_code', 'issued_to__full_name',)
-    ordering = ('created_at',)
+from .models import FlutterwaveCustomer, FlutterwavePayment, MpesaTransaction
 
 @admin.register(FlutterwaveCustomer)
 class FlutterwaveCustomerAdmin(admin.ModelAdmin):
