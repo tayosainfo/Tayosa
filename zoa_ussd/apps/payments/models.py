@@ -64,7 +64,6 @@ class FlutterwavePayment(models.Model):
     status = models.CharField(max_length=20)
     ip_address = models.GenericIPAddressField()
 
-    course_id = models.CharField(max_length=50, null=True)
     raw_json = models.CharField(max_length=5000, null=True, editable=True)
     mpesa_transaction = models.ForeignKey('MpesaTransaction', null=True, blank=True)
     
