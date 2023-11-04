@@ -1,6 +1,6 @@
 AfricastalkingGateway==2.0
 
-Django<=1.10
+Django<=3.2.23
 Django-Bootstrap3==9.1.0
 
 MySQL-Python==1.2.5
